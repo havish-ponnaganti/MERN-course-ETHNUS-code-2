@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Task 1</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            font-family: cursive;
+        }
+        button {
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            cursor: pointer;
+        }
+        label {
+            color: #333;
+            font-family: cursive;
+            font-size: 18px;
+        }
+        input[type="number"], input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin: 4px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>  
+    <h1>Reversing the Number</h1>
+    <label for="input">Enter the Number:</label>
+    <input type="number" id="input" placeholder="Enter the Number" name="num"><br><br>
+    <button onclick="reverseNumber()">Reverse</button><br><br>
+    <label for="output">Expected Output:</label>
+    <input type="text" id="output" name="output"><br><br>
+    <script>
+        function reverseNumber(){
+            var rev = document.getElementById("input");
+            var kal = rev.value;
+            var vas = kal.toString().split("").reverse().join("");
+            var sur = document.getElementById("output");
+            sur.value = vas;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Task 7</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .con {
+            height: 400px;
+            width: 1500px;
+            position: relative;
+            overflow: hidden;
+        }
+        #start {
+            margin-top: 20px;
+            background-color: blue;
+            padding: 10px;
+        }
+        #stop {
+            margin-top: 20px;
+            background-color: red;
+            padding: 10px;
+        }
+        #imgg {
+            height: 150px;
+            margin-top: 150px;
+            position: absolute;
+        }
+        #heading {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h2 id="heading">Click the following buttons to handle the animation</h2>
+    <div class="con">
+        <img src="https://pngimg.com/d/trian_PNG16644.png" id="imgg">
+    </div>
+    <button id="start" onclick="startt()">Start</button>
+    <button id="stop" onclick="stopp()">Stop</button>
+    <script>
+        var train = document.getElementById("imgg");
+        var startbtn = document.getElementById('start');
+        var stopbtn = document.getElementById('stop');
+        let animationId;
+        function startt() {
+            let position = 0;
+            const speed = 2;
+            function move() {
+                position += speed;
+                train.style.left = position + 'px';
+                if (position < 1500 ) {
+                    animationId = requestAnimationFrame(move);
+                }
+            }
+            animationId = requestAnimationFrame(move);
+        }
+        function stopp() {
+            cancelAnimationFrame(animationId);
+        }
+        startbtn.addEventListener('click', startt);
+        stopbtn.addEventListener('click', stopp);
+    </script>
+</body>
+</html>

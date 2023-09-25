@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Task 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Date and Time</h1>
+    <button onclick="showDate()">Show Date</button>
+    <p id="display"></p>
+    <button onclick="toggleLiveTime()">Toggle Live Time</button>
+    <p id="show"></p>
+    <script>
+        var liveTimeInterval;
+        function showDate() {
+            var currentDate = new Date();
+            var day = currentDate.getDate();
+            var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var month = monthNames[currentDate.getMonth()];
+            var year = currentDate.getFullYear();
+            var resDate = day + ' ' + month + ' ' + year;
+            document.getElementById('display').innerHTML = resDate;
+        }
+        function updateLiveTime() {
+            var currentDate = new Date();
+            var weekNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            var week = weekNames[currentDate.getDay()];
+            var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            var month = monthNames[currentDate.getMonth()];
+            var day = currentDate.getDate();
+            var year = currentDate.getFullYear();
+            var hours = currentDate.getHours();
+            var minutes = currentDate.getMinutes();
+            var seconds = currentDate.getSeconds();
+            var resTime = week + ', ' + month + ' ' + day + ', ' + year + ' ' + hours + ':' + minutes + ':' + seconds + ' GMT+0530 (India Standard Time)';
+            document.getElementById('show').innerHTML = resTime;
+        }
+        function toggleLiveTime() {
+            if (liveTimeInterval) {
+                clearInterval(liveTimeInterval);
+                liveTimeInterval = null;
+                document.getElementById('show').innerHTML = '';
+            } else {
+                liveTimeInterval = setInterval(updateLiveTime, 1000);
+                updateLiveTime();
+            }
+        }
+    </script>
+</body>
+</html>

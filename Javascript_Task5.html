@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Task 5</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px; /* Increased max-width for a larger box */
+            margin: 0 auto;
+            padding: 40px; /* Increased padding for spacing inside the box */
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+        }
+        td {
+            padding: 10px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" id="name" placeholder="Name"></td>
+                <td><span id="nameError" class="error"></span></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="email" id="email" placeholder="Email"></td>
+                <td><span id="emailError" class="error"></span></td>
+            </tr>
+            <tr>
+                <td>Url:</td>
+                <td><input type="url" id="url" placeholder="Url"></td>
+                <td><span id="urlError" class="error"></span></td>
+            </tr>
+            <tr>
+                <td>Message:</td>
+                <td><textarea id="Message" placeholder="Message"></textarea></td>
+                <td><span id="messageError" class="error"></span></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button onclick="validateform()" id="submit" type="submit">Submit</button></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        function validateform(){
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var url = document.getElementById("url").value;
+            var message = document.getElementById("Message").value;
+            var valid = true;
+            document.getElementById("name").classList.remove("input-error");
+            document.getElementById("email").classList.remove("input-error");
+            document.getElementById("url").classList.remove("input-error");
+            document.getElementById("Message").classList.remove("input-error");
+            if (name.trim() === "") {
+                valid = false;
+                document.getElementById("name").classList.add("input-error");
+                document.getElementById("nameError").classList.add("error");
+                document.getElementById("nameError").innerHTML = "* This field is required.";
+            } else {
+                document.getElementById("nameError").innerHTML = "";
+            }
+            if (email.trim() === "") {
+                valid = false;
+                document.getElementById("email").classList.add("input-error");
+                document.getElementById("emailError").classList.add("error");
+                document.getElementById("emailError").innerHTML = "* This field is required.";
+            } else if (!validateEmail(email)) {
+                valid = false;
+                document.getElementById("email").classList.add("input-error");
+                document.getElementById("emailError").classList.add("error");
+                document.getElementById("emailError").innerHTML = "* The valid email id is required.";
+            }
+            if (url.trim() === "") {
+                valid = false;
+                document.getElementById("url").classList.add("input-error");
+                document.getElementById("urlError").classList.add("error");
+                document.getElementById("urlError").innerHTML = "* This field is required.";
+            } else if (!validateURL(url)) {
+                valid = false;
+                document.getElementById("url").classList.add("input-error");
+                document.getElementById("urlError").classList.add("error");
+                document.getElementById("urlError").innerHTML = "* the valid url is required.";
+            }
+            if (message.trim() === "") {
+                valid = false;
+                document.getElementById("Message").classList.add("input-error");
+                document.getElementById("messageError").classList.add("error");
+                document.getElementById("messageError").innerHTML = "* This field is required.";
+            }
+            return valid;
+        }
+        function validateEmail(email) {
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            return emailPattern.test(email);
+        }
+        function validateURL(url) {
+            var urlPattern = /^(https?:\/\/)?([\w.-]+)\.([a-zA-Z]{2,6})(\/[\w.-])\/?$/;
+            return urlPattern.test(url);
+        }
+    </script>
+</body>
+</html>

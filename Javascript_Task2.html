@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Task 2</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #e74c3c;
+            font-family: 'Cursive', sans-serif;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            color: white;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        label {
+            color: #f1c40f;
+            font-family: 'Cursive', sans-serif;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sorting the String</h1>
+    <label>Enter the String:</label>
+    <input type="text" id="input" placeholder="Enter the String" name="str"><br><br>
+    <button onclick="sortstring()">Sort String</button><br><br>
+    <label>Expected Output:</label>
+    <input type="text" id="output" name="output" readonly><br><br>
+    <script>
+        function sortstring() {
+            var inputElement = document.getElementById("input");
+            var inputText = inputElement.value;
+            var sortedText = inputText.split("").sort().join("");
+            var outputElement = document.getElementById("output");
+            outputElement.value = sortedText;
+        }
+    </script>
+</body>
+</html>

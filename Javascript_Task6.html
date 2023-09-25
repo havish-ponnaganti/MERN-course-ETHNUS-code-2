@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Task 6</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        .error {
+            color: red;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        #username, #password, #login, .error {
+            width: 100%;
+            max-width: 300px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            height: 350px;
+            max-width: 300px;
+        }
+        .logo img {
+            max-width: 50%;
+            max-height: 50%;
+        }
+        .icon {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            background-color: rgb(240, 234, 234);
+            border-radius: 5px;
+            border: 1px solid black;
+        }
+        .icon i {
+            margin-right: 10px;
+        }
+        button{
+            width: auto;
+            padding: 10px;
+            background-color: #1877F2;
+            color: white;
+            border-radius: 5px;
+            border: 2px solid white;
+        }
+        input{
+            padding: 10px;
+        }
+        i{
+            padding: 10px;
+        }
+        h1{
+            font-family: 'Lucida Handwriting', cursive;
+        }
+        .rev a{
+            margin-left: 10px;
+        }
+        h5,.rev{
+            font-family: Arial;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="logo">
+                <img src="https://1000logos.net/wp-content/uploads/2017/02/Instagram-Logo-2013-2015.png" alt="Instagram Logo">
+            </div>
+            <div class="icon">
+                <i class="fas fa-user"></i>
+                <input type="text" name="username" id="username" placeholder="Username or Email">
+            </div><br>
+            <div class="icon">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="pass" id="password" placeholder="Password">
+            </div><br>
+            <button onclick="loginvalidation()" id="login">Login</button><br><br>
+            <div class="rev">
+                <input type="checkbox" name="remember me"> Remember me
+                <a href="https://www.instagram.com/accounts/password/reset/?hl=en">Forgot password?</a><br><br>
+            </div>
+            <p id="errorText" class="error"></p><br>
+        </div><br>
+        <h5>Don't have an account! <a href="https://www.instagram.com/accounts/emailsignup/?hl=en">Sign up here</a></h5><br>
+    </div>
+    <script>
+        function loginvalidation() {
+            var usernameOrEmail = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var errorText = document.getElementById("errorText");
+            if (usernameOrEmail.trim() === "") {
+                errorText.textContent = "Username or Email is required.";
+                return;
+            }
+            if (password.trim() === "") {
+                errorText.textContent = "Password is required.";
+                return;
+            }
+            if (password.length < 6) {
+                errorText.textContent = "Password must be at least 6 characters.";
+                return;
+            }
+            errorText.textContent = "";
+            
+            if (usernameOrEmail === "username" && password === "password") {
+                alert("Login successful!");
+            } else {
+                errorText.textContent = "Incorrect username or password.";
+            }
+        }
+    </script>
+</body>
+</html>

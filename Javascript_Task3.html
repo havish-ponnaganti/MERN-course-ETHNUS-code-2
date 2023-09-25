@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Task 3</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            width: 100px;
+            padding: 5px;
+            margin: 5px;
+        }
+        button {
+            padding: 5px 15px;
+            margin: 5px;
+        }
+        #res {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Simple Calculations</h1>
+        <label>Enter the First Number:</label>
+        <input type="number" id="num1" placeholder="Enter the First Number" name="num"><br><br>
+        <label>Enter the Second Number:</label>
+        <input type="number" id="num2" placeholder="Enter the Second Number" name="num"><br><br>
+        <button onclick="Multiply()">Multiply</button>
+        <button onclick="Divide()">Divide</button><br><br>
+        <label>Result:</label>
+        <input type="text" id="res" name="output" placeholder="Result"><br><br>
+    </div>
+    <script>
+        function Multiply() {
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            var res = num1 * num2;
+            document.getElementById("res").value = res;
+        }
+        function Divide() {
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            if (num2 === 0) {
+                alert("Cannot divide by zero!");
+                return;
+            }
+            var res = num1 / num2;
+            document.getElementById("res").value = res;
+        }
+    </script>
+</body>
+</html>
